@@ -1,0 +1,237 @@
+html{
+    --yellow: #ffc600;
+    --black: #272727;
+    font-size: 62.5%;
+    box-sizing: border-box;
+  
+    /* A system font stack so things load nice and quick! */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+      Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-weight: 900;
+    font-size: 1rem;
+    color: var(--black);
+    text-shadow: 0 2px 0 rgba(0, 0, 0, 0.07);
+  }
+  
+  body {
+    font-size: 1.5rem;
+    background: #9a91de;
+    min-height: calc(100vh - 10rem);
+    margin: 5rem;
+  }
+  
+  button {
+    background: #ffc600;
+    border: 0;
+    padding: 1rem 2rem;
+  }
+  
+  img {
+    max-width: 100%;
+  }
+  
+  .wrapper{
+    display: grid;
+    gap: 2rem;
+  }
+  
+  .top{
+    display: grid;
+    grid-template-areas: 
+    "hero hero cta1"
+    "hero hero cta2"
+    ;
+    gap: 2rem;
+  }
+  
+  .hero{
+    grid-area: hero;
+    background: white url(./images/burger_table.jpg);
+    min-height: 40rem;
+    background-size: cover;
+    background-position: bottom right;
+    padding: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    color: blanchedalmond;
+  }
+  
+  .hero > *{
+    padding: 0 1rem;
+    background: var(--yellow, yellow);
+    background: #ff355e;
+  }
+  
+  .cta{
+    background: var(--yellow, yellow);
+    background: blanchedalmond;
+    display: grid;
+    place-items: center;
+    align-content: center;
+  }
+  
+  .cta p{
+    margin: 0;
+  }
+  
+  .cta1{
+    grid-area: cta1;
+  }
+  
+  .cta2{
+    grid-area: cta2;
+  }
+  
+  .price{
+    font-size: 6rem;
+    font-weight: 300;
+  }
+  
+  .menu ul{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 1rem;
+  }
+  
+  .menu a{
+    color: var(--black);
+    background: var(--yellow);
+    background: blanchedalmond;
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 1rem;
+    font-size: 2rem;
+  }
+  
+  .menu li:nth-child(5) a{
+    background: #ff355e;
+  }
+  
+  [aria-controls="menu-list"]{
+    display: none;
+  }
+  
+  .features{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: 2rem;
+  }
+  
+  .feature{
+    background: whitesmoke;
+    text-align: center;
+    padding: 1rem ;
+    box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.1);
+  }
+  
+  .feature .icon{
+    font-size: 5rem;
+  }
+  
+  .feature p{
+    color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .about{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    background: whitesmoke;
+    padding: 5rem;
+    align-items: center;
+  }
+  
+  .gallery{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: 1rem;
+  }
+  
+  .gallery img{
+    width: 100%;
+    height: 100%;
+  }
+  
+  .gallery h2{
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+  
+  .gallery h2::before, .gallery h2::after{
+    content: '';
+    display: block;
+    height: 1rem;
+    background: linear-gradient(to left, var(--yellow), transparent);
+  }
+  
+  .gallery h2::after{
+    background: linear-gradient(to right, var(--yellow), transparent);
+  }
+  
+  @media (max-width: 1000px) {
+    .menu {
+      order: -1;
+      perspective: 800px;
+    }
+    [aria-controls="menu-list"] {
+      display: block;
+      margin-bottom: 10px;
+    }
+  
+    .menu ul {
+      max-height: 0;
+      overflow: hidden;
+      transform: rotateX(90deg);
+      transition: all 0.5s;
+    }
+  
+    [aria-expanded="true"] ~ ul {
+      display: grid;
+      max-height: 500px;
+      transform: rotateX(0);
+    }
+  
+    [aria-expanded="false"] .close {
+      display: none;
+    }
+  
+    [aria-expanded="true"] .close {
+      display: inline-block;
+    }
+  
+    [aria-expanded="true"] .open {
+      display: none;
+    }
+  
+  }
+  
+  @media(max-width : 700px){
+    .top{
+      grid-template-areas: 
+      "hero hero"
+      "cta1 cta2";
+    }
+  
+    .about{
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media(max-width : 500px){
+    .top{
+      grid-template-areas: 
+      "hero"
+      "cta1"
+      "cta2";
+    }
+  }
